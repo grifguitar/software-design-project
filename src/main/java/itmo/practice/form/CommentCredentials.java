@@ -1,10 +1,15 @@
 package itmo.practice.form;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Getter
+@Setter
 public class CommentCredentials {
     @NotNull
     @NotEmpty
@@ -12,23 +17,7 @@ public class CommentCredentials {
     @Lob
     private String text;
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
     private String login;
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
 
     public static String encode(String text) {
         String PKey = "4MxCi0bq4E";

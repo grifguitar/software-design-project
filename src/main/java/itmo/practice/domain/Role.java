@@ -1,17 +1,18 @@
 package itmo.practice.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+@Getter
+@Setter
 @Entity
 @Table(
         uniqueConstraints = @UniqueConstraint(columnNames = "name")
 )
-public class Role {
-    @Id
-    @GeneratedValue
-    private long id;
-
+public class Role extends AbstractEntity {
     @NotNull
     @Enumerated(EnumType.STRING)
     private Name name;
@@ -20,22 +21,6 @@ public class Role {
     }
 
     public Role(@NotNull Name name) {
-        this.name = name;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public Name getName() {
-        return name;
-    }
-
-    public void setName(Name name) {
         this.name = name;
     }
 

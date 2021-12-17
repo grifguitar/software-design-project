@@ -1,5 +1,7 @@
 package itmo.practice.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -9,16 +11,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+@Getter
+@Setter
 @Entity
 @Table(
         indexes = @Index(columnList = "creationTime"),
         uniqueConstraints = @UniqueConstraint(columnNames = "login")
 )
-public class Client {
-    @Id
-    @GeneratedValue
-    private long id;
-
+public class Client extends AbstractEntity {
     @NotNull
     @NotEmpty
     private String login;
@@ -50,56 +50,8 @@ public class Client {
     )
     private Set<Client> friends;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public List<Post> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
-    }
-
     public void addPost(Post post) {
         posts.add(post);
-    }
-
-    public Date getCreationTime() {
-        return creationTime;
-    }
-
-    public void setCreationTime(Date creationTime) {
-        this.creationTime = creationTime;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
-    public Set<Client> getFriends() {
-        return friends;
-    }
-
-    public void setFriends(Set<Client> friends) {
-        this.friends = friends;
     }
 
     public void addFriend(Client friend) {

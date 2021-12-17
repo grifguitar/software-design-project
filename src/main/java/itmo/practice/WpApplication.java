@@ -20,6 +20,7 @@ public class WpApplication implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(securityInterceptor);
 	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(WpApplication.class, args);
 	}
