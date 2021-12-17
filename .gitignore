@@ -24,7 +24,3 @@ hs_err_pid*
 
 .idea/
 target/
-software-design-project.iml
-
-# Local resources
-src/main/resources/application.properties
