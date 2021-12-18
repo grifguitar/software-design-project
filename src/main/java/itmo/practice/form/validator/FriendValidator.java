@@ -21,9 +21,10 @@ public class FriendValidator implements Validator {
             FriendCredentials friendCredentials = (FriendCredentials) target;
             String login = friendCredentials.getLogin();
             String currentLogin = friendCredentials.getCurrentLogin();
-            if (clientService.findFriends(login, currentLogin) == null) {
+            Boolean foundFriends = clientService.findFriends(login, currentLogin);
+            if (foundFriends == null) {
                 errors.rejectValue("login", "login.invalid", "invalid");
-            } else if (!clientService.findFriends(login, currentLogin)) {
+            } else if (!foundFriends) {
                 errors.rejectValue("login", "login.failed-you-are-not-his-friend", "failed, you are not his friend");
             }
         }
