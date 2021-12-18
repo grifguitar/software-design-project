@@ -3,18 +3,16 @@ package itmo.practice.service;
 import itmo.practice.domain.Comment;
 import itmo.practice.domain.Post;
 import itmo.practice.domain.Client;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import itmo.practice.repository.PostRepository;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class PostService {
     private final PostRepository postRepository;
-
-    public PostService(PostRepository postRepository) {
-        this.postRepository = postRepository;
-    }
 
     public List<Post> findAll() {
         return postRepository.findAllByOrderByCreationTimeDesc();

@@ -1,18 +1,16 @@
 package itmo.practice.form.validator;
 
 import itmo.practice.form.ClientCredentials;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import itmo.practice.service.ClientService;
 
+@RequiredArgsConstructor
 @Component
 public class ClientCredentialsRegisterValidator implements Validator {
     private final ClientService clientService;
-
-    public ClientCredentialsRegisterValidator(ClientService clientService) {
-        this.clientService = clientService;
-    }
 
     public boolean supports(Class<?> clazz) {
         return ClientCredentials.class.equals(clazz);

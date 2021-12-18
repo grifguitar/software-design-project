@@ -4,6 +4,7 @@ import itmo.practice.form.ClientCredentials;
 import itmo.practice.form.validator.ClientCredentialsEnterValidator;
 import itmo.practice.security.Guest;
 import itmo.practice.service.ClientService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,15 +17,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+@RequiredArgsConstructor
 @Controller
 public class EnterPage extends Page {
     private final ClientService clientService;
     private final ClientCredentialsEnterValidator clientCredentialsEnterValidator;
-
-    public EnterPage(ClientService clientService, ClientCredentialsEnterValidator clientCredentialsEnterValidator) {
-        this.clientService = clientService;
-        this.clientCredentialsEnterValidator = clientCredentialsEnterValidator;
-    }
 
     @InitBinder("enterForm")
     public void initBinder(WebDataBinder binder) {
