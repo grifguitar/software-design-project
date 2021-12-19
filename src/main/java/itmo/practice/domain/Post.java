@@ -31,7 +31,12 @@ public class Post extends AbstractEntity {
         if (comments.size() == 0) {
             return null;
         } else {
-            return encode(comments.get(0).getText());
+            Comment comment = comments.get(0);
+            if (comment != null) {
+                return encode(comment.getText());
+            } else {
+                return "NO MESSAGE";
+            }
         }
     }
 

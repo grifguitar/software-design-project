@@ -2,6 +2,7 @@ package itmo.practice.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -17,6 +18,7 @@ public class Comment extends AbstractEntity {
     @NotEmpty
     @Size(min = 1, max = 650)
     @Lob
+    @Type(type = "org.hibernate.type.TextType")
     private String text;
 
     @ManyToOne

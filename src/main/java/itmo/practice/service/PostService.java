@@ -6,6 +6,7 @@ import itmo.practice.domain.Client;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import itmo.practice.repository.PostRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class PostService {
         return postRepository.findAllByOrderByCreationTimeDesc();
     }
 
+    @Transactional
     public Post findById(Long id) {
         return id == null ? null : postRepository.findById(id).orElse(null);
     }
