@@ -1,10 +1,15 @@
 package itmo.practice.form;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+@Getter
+@Setter
 public class FriendCredentials {
     @NotNull
     @NotEmpty
@@ -12,19 +17,7 @@ public class FriendCredentials {
     @Pattern(regexp = "[a-z]+", message = "expected lowercase latin letters")
     private String login;
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     private String currentLogin;
-
-    public String getCurrentLogin() {
-        return currentLogin;
-    }
 
     public FriendCredentials setCurrentLogin(String currentLogin) {
         this.currentLogin = currentLogin;

@@ -1,6 +1,7 @@
 package itmo.practice.controller;
 
 import itmo.practice.service.ClientService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,15 +16,11 @@ import itmo.practice.form.validator.FriendCredentialsValidator;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+@RequiredArgsConstructor
 @Controller
 public class WriteFriendPage extends Page {
     private final ClientService clientService;
     private final FriendCredentialsValidator friendCredentialsValidator;
-
-    public WriteFriendPage(ClientService clientService, FriendCredentialsValidator friendCredentialsValidator) {
-        this.clientService = clientService;
-        this.friendCredentialsValidator = friendCredentialsValidator;
-    }
 
     @InitBinder("friend")
     public void initBinder(WebDataBinder binder) {

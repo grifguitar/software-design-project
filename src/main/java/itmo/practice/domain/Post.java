@@ -1,5 +1,7 @@
 package itmo.practice.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -11,13 +13,11 @@ import java.util.List;
 
 import static itmo.practice.form.CommentCredentials.encode;
 
+@Getter
+@Setter
 @Entity
 @Table
-public class Post {
-    @Id
-    @GeneratedValue
-    private long id;
-
+public class Post extends AbstractEntity {
     @NotNull
     @NotEmpty
     @Size(min = 1, max = 60)
@@ -27,10 +27,6 @@ public class Post {
     @OrderBy("id desc")
     private List<Comment> comments;
 
-    public List<Comment> getComments() {
-        return comments;
-    }
-
     public String getLastComment() {
         if (comments.size() == 0) {
             return null;
@@ -39,36 +35,8 @@ public class Post {
         }
     }
 
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
     @CreationTimestamp
     private Date creationTime;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Date getCreationTime() {
-        return creationTime;
-    }
-
-    public void setCreationTime(Date creationTime) {
-        this.creationTime = creationTime;
-    }
 
     public void addComment(Client client, Comment comment) {
         comment.setPost(this);

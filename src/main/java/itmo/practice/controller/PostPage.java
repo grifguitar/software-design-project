@@ -4,6 +4,7 @@ import itmo.practice.domain.Comment;
 import itmo.practice.domain.Post;
 import itmo.practice.domain.Client;
 import itmo.practice.service.PostService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,13 +19,10 @@ import java.util.List;
 
 import static itmo.practice.form.CommentCredentials.encode;
 
+@RequiredArgsConstructor
 @Controller
 public class PostPage extends Page {
     private final PostService postService;
-
-    public PostPage(PostService postService) {
-        this.postService = postService;
-    }
 
     @GetMapping("post/{id:\\d{1,10}}")
     public String postPageGet(@PathVariable long id, Model model, HttpSession httpSession) {

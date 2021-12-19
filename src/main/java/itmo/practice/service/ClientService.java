@@ -1,30 +1,20 @@
 package itmo.practice.service;
 
 import itmo.practice.domain.Post;
-import itmo.practice.domain.Role;
 import itmo.practice.domain.Client;
 import itmo.practice.form.ClientCredentials;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import itmo.practice.repository.PostRepository;
-import itmo.practice.repository.RoleRepository;
 import itmo.practice.repository.ClientRepository;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class ClientService {
     private final ClientRepository clientRepository;
     private final PostRepository postRepository;
-
-    public ClientService(ClientRepository clientRepository, PostRepository postRepository, RoleRepository roleRepository) {
-        this.clientRepository = clientRepository;
-        this.postRepository = postRepository;
-        for (Role.Name name : Role.Name.values()) {
-            if (roleRepository.countByName(name) == 0) {
-                roleRepository.save(new Role(name));
-            }
-        }
-    }
 
     public Client register(ClientCredentials clientCredentials) {
         Client client = new Client();

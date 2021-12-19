@@ -2,6 +2,7 @@ package itmo.practice.controller;
 
 import itmo.practice.domain.Post;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,15 +21,11 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
+@RequiredArgsConstructor
 @Controller
 public class FriendsPage extends Page {
     private final ClientService clientService;
     private final FriendValidator friendValidator;
-
-    public FriendsPage(ClientService clientService, FriendValidator friendValidator) {
-        this.clientService = clientService;
-        this.friendValidator = friendValidator;
-    }
 
     @InitBinder("friend")
     public void initBinder(WebDataBinder binder) {
