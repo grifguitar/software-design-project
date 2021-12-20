@@ -27,7 +27,7 @@ public class PostPage extends Page {
     @GetMapping("post/{id:\\d{1,10}}")
     public String postPageGet(@PathVariable long id, Model model, HttpSession httpSession) {
         if (postService.findById(id) == null) {
-            putMessage(httpSession, "Chat does not exist!");
+            putNotification(httpSession, "Chat does not exist!");
             return "redirect:/";
         }
         Client client = getClient(httpSession);
@@ -47,13 +47,13 @@ public class PostPage extends Page {
                 return "PostPage";
             }
         }
-        putMessage(httpSession, "Access is denied!");
+        putNotification(httpSession, "Access is denied!");
         return "redirect:/";
     }
 
     @GetMapping("post/{id:\\d{10,}}")
     public String postPageGetMore(@PathVariable String id, Model model, HttpSession httpSession) {
-        putMessage(httpSession, "Chat does not exist!");
+        putNotification(httpSession, "Chat does not exist!");
         return "redirect:/";
     }
 
@@ -76,19 +76,19 @@ public class PostPage extends Page {
             return "PostPage";
         }
         if (postService.findById(id) == null) {
-            putMessage(httpSession, "Chat does not exist!");
+            putNotification(httpSession, "Chat does not exist!");
             return "redirect:/";
         }
         Comment comment = new Comment();
         comment.setText(encode(commentCredentials.getText()));
         postService.writeComment(getClient(httpSession), postService.findById(id), comment);
-        putMessage(httpSession, "You sent a message!");
+        putNotification(httpSession, "You sent a message!");
         return "redirect:/post/" + id;
     }
 
     @PostMapping("post/{id:\\d{10,}}")
     public String postPagePostMore(@PathVariable String id, HttpSession httpSession) {
-        putMessage(httpSession, "Chat does not exist!");
+        putNotification(httpSession, "Chat does not exist!");
         return "redirect:/";
     }
 }

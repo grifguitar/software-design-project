@@ -14,7 +14,7 @@ public class ClientCredentials {
     @NotNull
     @NotEmpty
     @Size(min = 2, max = 30)
-    @Pattern(regexp = "[a-z]+", message = "Expected lowercase Latin letters")
+    @Pattern(regexp = "[a-z]+", message = "expected lowercase Latin letters")
     private String login;
 
     @NotNull

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 
 public class Page {
     private static final String USER_ID_SESSION_KEY = "clientId";
-    private static final String MESSAGE_SESSION_KEY = "message";
+    private static final String NOTIFICATION_SESSION_KEY = "notification";
 
     @Autowired
     private ClientService clientService;
@@ -19,11 +19,11 @@ public class Page {
         return clientService.findById((Long) httpSession.getAttribute(USER_ID_SESSION_KEY));
     }
 
-    @ModelAttribute("message")
-    public String getMessage(HttpSession httpSession) {
-        String message = (String) httpSession.getAttribute(MESSAGE_SESSION_KEY);
-        httpSession.removeAttribute(MESSAGE_SESSION_KEY);
-        return message;
+    @ModelAttribute("notification")
+    public String getNotification(HttpSession httpSession) {
+        String notification = (String) httpSession.getAttribute(NOTIFICATION_SESSION_KEY);
+        httpSession.removeAttribute(NOTIFICATION_SESSION_KEY);
+        return notification;
     }
 
     void setClient(HttpSession httpSession, Client client) {
@@ -38,7 +38,7 @@ public class Page {
         httpSession.removeAttribute(USER_ID_SESSION_KEY);
     }
 
-    public void putMessage(HttpSession httpSession, String message) {
-        httpSession.setAttribute(MESSAGE_SESSION_KEY, message);
+    public void putNotification(HttpSession httpSession, String notification) {
+        httpSession.setAttribute(NOTIFICATION_SESSION_KEY, notification);
     }
 }

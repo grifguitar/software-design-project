@@ -9,7 +9,7 @@
     <#if isLogged>
         <div class="form">
             <div class="body">
-                <form method="post" action="">
+                <form method="post" action="" id="messageForm">
                     <input type="hidden" name="action" value="writeComment"/>
                     <div class="field">
                         <div class="name">

@@ -1,13 +1,15 @@
 :root {
     --border-color: rgb(185, 185, 185);
+    --border-color-active: rgb(94, 97, 106);
     --border-radius: 6px;
     --black-color: #333;
-    --caption-color: deepskyblue;
+    --caption-color: rgb(168, 92, 55);
     --error-color: red;
-    --datatable-color: lightblue;
-    --datatable-dark-cell-color: lightcyan;
-    --message-border-color: #1E88E5;
-    --message-background-color: #E3F2FD;
+    --datatable-color: rgb(232, 170, 140);
+    --datatable-dark-cell-color: rgb(253, 213, 193);
+    --comment-background-color: rgb(248, 222, 209);
+    --post-background-color: rgb(248, 222, 209);
+    --main-color: rgb(232, 170, 140);
     color: var(--black-color);
     font-family: Verdana, sans-serif;
     font-size: 16px;
@@ -127,13 +129,4 @@ aside section .footer a {
 
 aside section .footer a:after {
     content: " →";
-}
-
-.message {
-    margin: 1rem 0;
-    padding: 0.5rem;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--message-border-color);
-    background-color: var(--message-background-color);
-    text-align: center;
 }

@@ -46,7 +46,7 @@ public class WriteFriendPage extends Page {
         }
 
         clientService.writeFriend(getClient(httpSession), clientService.findByLogin(friendCredentials.getLogin()));
-        putMessage(httpSession, "You added new friend!");
+        putNotification(httpSession, "You added new friend!");
 
         return "redirect:/";
     }

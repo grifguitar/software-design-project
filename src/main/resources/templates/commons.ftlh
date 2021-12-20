@@ -1,12 +1,12 @@
 <#-- @ftlvariable name="client" type="itmo.practice.domain.Client" -->
-<#-- @ftlvariable name="message" type="java.lang.String" -->
+<#-- @ftlvariable name="notification" type="java.lang.String" -->
 <#import "/spring.ftl" as spring/>
 <#macro page>
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>whatischat</title>
+        <title>AniGram</title>
         <link rel="icon" type="image/png" href="<@spring.url '/favicon.png'/>"/>
         <link rel="stylesheet" type="text/css" href="<@spring.url '/css/normalize.css'/>">
         <link rel="stylesheet" type="text/css" href="<@spring.url '/css/style.css'/>">
@@ -16,7 +16,12 @@
     </head>
     <body>
     <header>
-        <a href="/"><img src="<@spring.url '/img/logo.png'/>" alt="whatischat" title="whatischat"/></a>
+        <p class="logo">
+            <a href="/">
+                <img src="<@spring.url '/img/logo.png'/>" alt="AniGram"
+                     title="AniGram"/>
+            </a>
+        </p>
         <div class="enter-or-register-box">
             <#if client??>
                 ${client.login}
@@ -45,8 +50,8 @@
         </main>
     </div>
     <footer>
-        <#if message??>
-            ${message}
+        <#if notification??>
+            ${notification}
         </#if>
     </footer>
     </body>

@@ -41,9 +41,9 @@
     margin: 1.5rem 19.5rem;
 }
 
-.form-box .button-field input {
-    padding: 0.1rem 1.5rem;
-}
+/*.form-box .button-field input {*/
+/*    padding: 0.1rem 1.5rem;*/
+/*}*/
 
 .form-box .error {
     clear: both;
@@ -81,13 +81,13 @@
     max-width: 99%;
 }
 
-.form .button-field {
-    margin-bottom: 2rem;
-}
+/*.form .button-field {*/
+/*    margin-bottom: 2rem;*/
+/*}*/
 
-.form .button-field input {
-    padding: 0.1rem 1.5rem;
-}
+/*.form .button-field input {*/
+/*    padding: 0.1rem 1.5rem;*/
+/*}*/
 
 .form .error {
     color: var(--error-color);

@@ -48,7 +48,7 @@ public class FriendsPage extends Page {
             return "FriendsPage";
         }
 
-        putMessage(httpSession, "Chat between " + friendCredentials.getCurrentLogin() + " and "
+        putNotification(httpSession, "Chat between " + friendCredentials.getCurrentLogin() + " and "
                 + friendCredentials.getLogin() + "!");
 
         Client currentClient = clientService.findByLogin(friendCredentials.getCurrentLogin());
@@ -69,7 +69,7 @@ public class FriendsPage extends Page {
         post.setTitle("Chat between " + friendCredentials.getCurrentLogin() + " and " + friendCredentials.getLogin());
 
         clientService.writePost(clients, post);
-        putMessage(httpSession, "You created chat!");
+        putNotification(httpSession, "You created chat!");
 
         return "redirect:/post/" + post.getId();
     }
