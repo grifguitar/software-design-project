@@ -177,9 +177,14 @@ main .comment .body p:last-child {
 
 .logo {
     text-align: center;
+    overflow: hidden;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .logo a img {
     width: 1278px;
     height: auto;
+    max-width: 100%;
+    display: inline-block;
 }
