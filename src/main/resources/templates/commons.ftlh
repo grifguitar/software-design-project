@@ -24,7 +24,7 @@
         </p>
         <div class="enter-or-register-box">
             <#if client??>
-                ${client.login}
+                <div class="client">${client.login}</div>
                 |
                 <a href="/logout">Logout</a>
             <#else>
@@ -67,7 +67,7 @@
 
 <#macro chat chat visible>
 <#-- @ftlvariable name="chat" type="itmo.practice.domain.Chat" -->
-    <div class="post">
+    <div class="chat">
         <div class="title"><a href="/chat/${chat.id}">${chat.title}</a></div>
         <#if visible>
             <div class="footer">

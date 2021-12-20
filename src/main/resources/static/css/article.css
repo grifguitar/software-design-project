@@ -1,45 +1,45 @@
-main .post {
+main .chat {
     margin-bottom: 1em;
 }
 
-main .post .title {
+main .chat .title {
     color: var(--caption-color);
     font-weight: bold;
     font-size: 1.25rem;
 }
 
-main .post .title A {
+main .chat .title A {
     text-decoration: none;
     color: var(--caption-color);
 }
 
-main .post .title A:hover {
+main .chat .title A:hover {
     text-decoration: underline;
     color: var(--caption-color);
 }
 
-main .post .information {
+main .chat .information {
     margin-top: 0.25rem;
     font-size: 0.85rem;
     color: #888;
 }
 
-main .post .body {
+main .chat .body {
     border-left: 4px solid var(--border-color);
     padding-left: 0.75rem;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-main .post .body p:last-child {
+main .chat .body p:last-child {
     margin: 0;
 }
 
-main .post .attachment {
+main .chat .attachment {
     padding: 0;
     margin: 0.5rem 0 0 0;
 }
 
-main .post .attachment li {
+main .chat .attachment li {
     list-style: none;
     padding: 0.25rem 20px;
     margin: 0;
@@ -47,7 +47,7 @@ main .post .attachment li {
     color: #888;
 }
 
-main .post .footer {
+main .chat .footer {
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -57,33 +57,33 @@ main .post .footer {
     min-height: 2rem;
     font-family: Verdana, sans-serif;
     font-style: italic;
-    background-color: var(--post-background-color);
+    background-color: var(--chat-background-color);
 }
 
-main .post .footer .left {
+main .chat .footer .left {
     float: left;
     padding-left: 0.5rem;
 }
 
-main .post .footer .left img {
+main .chat .footer .left img {
     position: relative;
     top: 5px;
 }
 
-main .post .footer .right img {
+main .chat .footer .right img {
     position: relative;
     margin-left: 0.5rem;
     top: 2px;
 }
 
-main .post .footer .right {
+main .chat .footer .right {
     float: right;
     font-size: 0.85rem;
     line-height: 2rem;
     padding-right: 0.5rem;
 }
 
-main .post .footer .positive-score {
+main .chat .footer .positive-score {
     color: green;
     font-weight: bold;
     line-height: 1.75rem;
