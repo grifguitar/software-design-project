@@ -35,10 +35,7 @@ public class ChatPage extends Page {
         Client client = getClient(httpSession);
         for (Chat chat : client.getChats()) {
             if (id == chat.getId()) {
-                model.addAttribute("messageForm", new MessageCredentials());
-                model.addAttribute("isLogged", getClient(httpSession) != null);
-                model.addAttribute("chatGet", chatService.findById(id));
-                model.addAttribute("messages", findMessageById(id));
+                addAttributes(model, getClient(httpSession) != null, id, new MessageCredentials());
                 return "ChatPage";
             }
         }
@@ -58,10 +55,7 @@ public class ChatPage extends Page {
                                BindingResult bindingResult,
                                HttpSession httpSession, Model model) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("messages", findMessageById(id));
-            model.addAttribute("chatGet", chatService.findById(id));
-            model.addAttribute("isLogged", getClient(httpSession) != null);
-            model.addAttribute("messageForm", messageCredentials);
+            addAttributes(model, getClient(httpSession) != null, id, messageCredentials);
             return "ChatPage";
         }
         if (chatService.findById(id) == null) {
@@ -90,5 +84,12 @@ public class ChatPage extends Page {
             messages.add(decodeMessage);
         }
         return messages;
+    }
+
+    private void addAttributes(Model model, boolean isLogged, long chatId, MessageCredentials messageForm) {
+        model.addAttribute("messages", findMessageById(chatId));
+        model.addAttribute("chatGet", chatService.findById(chatId));
+        model.addAttribute("isLogged", isLogged);
+        model.addAttribute("messageForm", messageForm);
     }
 }
