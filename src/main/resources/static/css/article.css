@@ -124,7 +124,7 @@ main .post .footer .positive-score {
     border-radius: 0;
 }
 
-#messageForm .button-field:hover input {
+#messageForm .button-field input:hover {
     /*color: var(--main-color);*/
     /*border: 1px solid var(--main-color);*/
     /*border-radius: var(--border-radius);*/
@@ -136,7 +136,7 @@ main .post .footer .positive-score {
     border-radius: var(--border-radius);
 }
 
-#messageForm .button-field:active input {
+#messageForm .button-field input:active {
     /*color: black;*/
     /*border: 1px solid black;*/
     /*border-radius: var(--border-radius);*/
