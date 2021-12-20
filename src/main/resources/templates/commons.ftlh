@@ -65,26 +65,26 @@
     </#if>
 </#macro>
 
-<#macro post post visible>
-<#-- @ftlvariable name="post" type="itmo.practice.domain.Post" -->
+<#macro chat chat visible>
+<#-- @ftlvariable name="chat" type="itmo.practice.domain.Chat" -->
     <div class="post">
-        <div class="title"><a href="/post/${post.id}">${post.title}</a></div>
+        <div class="title"><a href="/chat/${chat.id}">${chat.title}</a></div>
         <#if visible>
             <div class="footer">
-                <#if post.getLastComment()??>
-                    ${post.getLastComment()}
+                <#if chat.getLastMessage()??>
+                    ${chat.getLastMessage()}
                 </#if>
             </div>
         </#if>
     </div>
 </#macro>
 
-<#macro comment comment>
-<#-- @ftlvariable name="comment" type="itmo.practice.form.CommentCredentials" -->
+<#macro message message>
+<#-- @ftlvariable name="message" type="itmo.practice.form.MessageCredentials" -->
     <div class="comment">
-        <div class="information">${comment.login}</div>
+        <div class="information">${message.login}</div>
         <div class="body">
-            ${comment.text?no_esc}
+            ${message.text?no_esc}
         </div>
     </div>
 </#macro>

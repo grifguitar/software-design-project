@@ -38,8 +38,8 @@ public class RegisterPage extends Page {
     @Guest
     @PostMapping("/register")
     public String registerPost(@Valid @ModelAttribute("registerForm") ClientCredentials registerForm,
-                           BindingResult bindingResult,
-                           HttpSession httpSession) {
+                               BindingResult bindingResult,
+                               HttpSession httpSession) {
         if (bindingResult.hasErrors()) {
             return "RegisterPage";
         }

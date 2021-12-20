@@ -38,8 +38,8 @@ public class EnterPage extends Page {
     @Guest
     @PostMapping("/enter")
     public String enter(@Valid @ModelAttribute("enterForm") ClientCredentials enterForm,
-                           BindingResult bindingResult,
-                           HttpSession httpSession) {
+                        BindingResult bindingResult,
+                        HttpSession httpSession) {
         if (bindingResult.hasErrors()) {
             return "EnterPage";
         }

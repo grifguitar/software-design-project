@@ -11,21 +11,21 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class WpApplication implements WebMvcConfigurer {
-	private SecurityInterceptor securityInterceptor;
+    private SecurityInterceptor securityInterceptor;
 
-	@Autowired
-	public void setSecurityInterceptor(SecurityInterceptor securityInterceptor) {
-		this.securityInterceptor = securityInterceptor;
-	}
+    @Autowired
+    public void setSecurityInterceptor(SecurityInterceptor securityInterceptor) {
+        this.securityInterceptor = securityInterceptor;
+    }
 
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(securityInterceptor);
-	}
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(securityInterceptor);
+    }
 
-	public static void main(String[] args) {
-		final ConfigurableApplicationContext run = SpringApplication.run(WpApplication.class, args);
-		run.getBean(BaseDbInitializer.class).initialize();
-	}
+    public static void main(String[] args) {
+        final ConfigurableApplicationContext run = SpringApplication.run(WpApplication.class, args);
+        run.getBean(BaseDbInitializer.class).initialize();
+    }
 
 }
