@@ -47,7 +47,34 @@ header .languages {
 header .enter-or-register-box {
     position: absolute;
     top: 32px;
-    right: 0;
+    right: 1rem;
+}
+
+header .enter-or-register-box .client {
+    font-weight: bold;
+}
+
+header .enter-or-register-box a:link {
+    color: var(--border-color-active);
+    text-decoration: none;
+}
+
+header .enter-or-register-box a:hover {
+    color: var(--border-color-active);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+header .enter-or-register-box a:active {
+    color: var(--border-color-active);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+header .enter-or-register-box a:visited {
+    color: var(--border-color-active);
+    font-weight: bold;
+    text-decoration: none;
 }
 
 header nav {
