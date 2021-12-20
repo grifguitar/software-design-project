@@ -2,6 +2,7 @@ package itmo.practice.form;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -10,11 +11,12 @@ import javax.validation.constraints.Size;
 
 @Getter
 @Setter
-public class CommentCredentials {
+public class MessageCredentials {
     @NotNull
     @NotEmpty
     @Size(min = 1, max = 650)
     @Lob
+    @Type(type = "org.hibernate.type.TextType")
     private String text;
 
     private String login;

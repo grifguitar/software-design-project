@@ -1,8 +1,6 @@
 package itmo.practice.controller;
 
 import itmo.practice.domain.Client;
-import itmo.practice.service.PostService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,18 +8,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
-@RequiredArgsConstructor
 @Controller
 public class IndexPage extends Page {
-    private final PostService postService;
-
     @GetMapping({"", "/"})
     public String index(Model model, HttpSession httpSession) {
         Client client;
         if ((client = getClient(httpSession)) != null) {
-            model.addAttribute("posts", client.getPosts());
+            model.addAttribute("chats", client.getChats());
         } else {
-            model.addAttribute("posts", new ArrayList<>());
+            model.addAttribute("chats", new ArrayList<>());
         }
         return "IndexPage";
     }

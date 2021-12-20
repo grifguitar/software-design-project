@@ -1,6 +1,6 @@
 package itmo.practice.controller;
 
-import itmo.practice.domain.Post;
+import itmo.practice.domain.Chat;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -53,10 +53,10 @@ public class FriendsPage extends Page {
 
         Client currentClient = clientService.findByLogin(friendCredentials.getCurrentLogin());
         Client client = clientService.findByLogin(friendCredentials.getLogin());
-        for (Post currentClientPost : currentClient.getPosts()) {
-            for (Post clientPost : client.getPosts()) {
-                if (currentClientPost.getId() == clientPost.getId()) {
-                    return "redirect:/post/" + currentClientPost.getId();
+        for (Chat currentClientChat : currentClient.getChats()) {
+            for (Chat clientChat : client.getChats()) {
+                if (currentClientChat.getId() == clientChat.getId()) {
+                    return "redirect:/chat/" + currentClientChat.getId();
                 }
             }
         }
@@ -65,12 +65,12 @@ public class FriendsPage extends Page {
         clients.add(clientService.findByLogin(friendCredentials.getLogin()));
         clients.add(clientService.findByLogin(friendCredentials.getCurrentLogin()));
 
-        Post post = new Post();
-        post.setTitle("Chat between " + friendCredentials.getCurrentLogin() + " and " + friendCredentials.getLogin());
+        Chat chat = new Chat();
+        chat.setTitle("Chat between " + friendCredentials.getCurrentLogin() + " and " + friendCredentials.getLogin());
 
-        clientService.writePost(clients, post);
+        clientService.createChat(clients, chat);
         putNotification(httpSession, "You created chat!");
 
-        return "redirect:/post/" + post.getId();
+        return "redirect:/chat/" + chat.getId();
     }
 }

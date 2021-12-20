@@ -22,7 +22,7 @@ public class MockClientRepository implements ClientRepository {
         if (!clients.contains(s)) {
             s.setId(idCounter++);
             s.setCreationTime(Date.from(Instant.now()));
-            s.setPosts(new ArrayList<>());
+            s.setChats(new ArrayList<>());
             s.setFriends(new HashSet<>());
             clients.add(s);
         }

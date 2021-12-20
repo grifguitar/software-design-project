@@ -1,11 +1,11 @@
 package itmo.practice.service;
 
-import itmo.practice.domain.Post;
+import itmo.practice.domain.Chat;
 import itmo.practice.domain.Client;
 import itmo.practice.form.ClientCredentials;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import itmo.practice.repository.PostRepository;
+import itmo.practice.repository.ChatRepository;
 import itmo.practice.repository.ClientRepository;
 
 import java.util.List;
@@ -14,13 +14,17 @@ import java.util.List;
 @Service
 public class ClientService {
     private final ClientRepository clientRepository;
-    private final PostRepository postRepository;
+    private final ChatRepository chatRepository;
 
     public Client register(ClientCredentials clientCredentials) {
         Client client = new Client();
         client.setLogin(clientCredentials.getLogin());
         clientRepository.save(client);
-        clientRepository.updatePasswordSha(client.getId(), clientCredentials.getLogin(), clientCredentials.getPassword());
+        clientRepository.updatePasswordSha(
+                client.getId(),
+                clientCredentials.getLogin(),
+                clientCredentials.getPassword()
+        );
         return client;
     }
 
@@ -29,11 +33,15 @@ public class ClientService {
     }
 
     public Client findByLoginAndPassword(String login, String password) {
-        return login == null || password == null ? null : clientRepository.findByLoginAndPassword(login, password);
+        return (login == null || password == null)
+                ? null
+                : clientRepository.findByLoginAndPassword(login, password);
     }
 
     public Client findByLogin(String login) {
-        return login == null ? null : clientRepository.findByLogin(login);
+        return (login == null)
+                ? null
+                : clientRepository.findByLogin(login);
     }
 
     public Boolean findFriends(String login1, String login2) {
@@ -45,17 +53,19 @@ public class ClientService {
     }
 
     public Client findById(Long id) {
-        return id == null ? null : clientRepository.findById(id).orElse(null);
+        return (id == null)
+                ? null
+                : clientRepository.findById(id).orElse(null);
     }
 
     public List<Client> findAll() {
         return clientRepository.findAllByOrderByIdDesc();
     }
 
-    public void writePost(List<Client> clients, Post post) {
-        postRepository.save(post);
+    public void createChat(List<Client> clients, Chat chat) {
+        chatRepository.save(chat);
         for (Client client : clients) {
-            client.addPost(post);
+            client.addChat(chat);
             clientRepository.save(client);
         }
     }

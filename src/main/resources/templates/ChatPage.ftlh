@@ -1,24 +1,24 @@
-<#-- @ftlvariable name="comments" type="itmo.practice.form.CommentCredentials[]" -->
-<#-- @ftlvariable name="commentForm" type="itmo.practice.form.CommentCredentials" -->
+<#-- @ftlvariable name="messages" type="itmo.practice.form.MessageCredentials[]" -->
+<#-- @ftlvariable name="messageForm" type="itmo.practice.form.MessageCredentials" -->
 <#-- @ftlvariable name="isLogged" type="boolean" -->
-<#-- @ftlvariable name="postGet" type="itmo.practice.domain.Post" -->
+<#-- @ftlvariable name="chatGet" type="itmo.practice.domain.Chat" -->
 <#import "commons.ftlh" as c>
 
 <@c.page>
-    <@c.post post=postGet visible=false/>
+    <@c.chat chat=chatGet visible=false/>
     <#if isLogged>
         <div class="form">
             <div class="body">
                 <form method="post" action="" id="messageForm">
-                    <input type="hidden" name="action" value="writeComment"/>
+                    <input type="hidden" name="action" value="writeMessage"/>
                     <div class="field">
                         <div class="name">
                             <label for="text">Message</label>
                         </div>
                         <div class="value">
-                            <textarea id="text" name="text">${commentForm.text!}</textarea>
+                            <textarea id="text" name="text">${messageForm.text!}</textarea>
                         </div>
-                        <@c.error "commentForm.text"/>
+                        <@c.error "messageForm.text"/>
                     </div>
                     <div class="button-field">
                         <input type="submit" value="Write">
@@ -27,7 +27,7 @@
             </div>
         </div>
     </#if>
-    <#list comments as comment>
-        <@c.comment comment=comment/>
+    <#list messages as message>
+        <@c.message message=message/>
     </#list>
 </@c.page>

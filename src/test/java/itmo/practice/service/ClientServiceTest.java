@@ -1,8 +1,8 @@
 package itmo.practice.service;
 
 import itmo.practice.TestUtils;
+import itmo.practice.domain.Chat;
 import itmo.practice.domain.Client;
-import itmo.practice.domain.Post;
 import itmo.practice.form.ClientCredentials;
 import org.junit.After;
 import org.junit.Assert;
@@ -16,8 +16,8 @@ public class ClientServiceTest {
     private static final int ITERATIONS = 10;
 
     private final MockClientRepository clientRepository = new MockClientRepository();
-    private final MockPostRepository postRepository = new MockPostRepository();
-    private final ClientService service = new ClientService(clientRepository, postRepository);
+    private final MockChatRepository chatRepository = new MockChatRepository();
+    private final ClientService service = new ClientService(clientRepository, chatRepository);
 
     @Test
     public void registerTest() {
@@ -99,17 +99,17 @@ public class ClientServiceTest {
     }
 
     @Test
-    public void writePostTest() {
+    public void createChatTest() {
         Client client = service.register(TestUtils.clientCredentialsByLogin(LOGIN));
-        Post post = new Post();
+        Chat chat = new Chat();
 
         ArrayList<Client> clients = new ArrayList<>();
         clients.add(client);
 
-        service.writePost(clients, post);
+        service.createChat(clients, chat);
 
-        Assert.assertTrue(client.getPosts().contains(post));
-        Assert.assertTrue(postRepository.getPosts().contains(post));
+        Assert.assertTrue(client.getChats().contains(chat));
+        Assert.assertTrue(chatRepository.getChats().contains(chat));
     }
 
     @Test
@@ -127,6 +127,6 @@ public class ClientServiceTest {
     @After
     public void after() {
         clientRepository.deleteAll();
-        postRepository.deleteAll();
+        chatRepository.deleteAll();
     }
 }

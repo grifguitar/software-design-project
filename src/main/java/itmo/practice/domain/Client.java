@@ -26,11 +26,11 @@ public class Client extends AbstractEntity {
     private String password_sha;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "client_post",
+    @JoinTable(name = "client_chat",
             joinColumns = @JoinColumn(name = "client_id"),
-            inverseJoinColumns = @JoinColumn(name = "post_id")
+            inverseJoinColumns = @JoinColumn(name = "chat_id")
     )
-    private List<Post> posts;
+    private List<Chat> chats;
 
     @CreationTimestamp
     private Date creationTime;
@@ -50,8 +50,8 @@ public class Client extends AbstractEntity {
     )
     private Set<Client> friends;
 
-    public void addPost(Post post) {
-        posts.add(post);
+    public void addChat(Chat chat) {
+        getChats().add(chat);
     }
 
     public void addFriend(Client friend) {

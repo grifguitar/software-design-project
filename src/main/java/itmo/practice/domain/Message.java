@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 @Setter
 @Entity
 @Table
-public class Comment extends AbstractEntity {
+public class Message extends AbstractEntity {
     @NotNull
     @NotEmpty
     @Size(min = 1, max = 650)
@@ -26,6 +26,6 @@ public class Comment extends AbstractEntity {
     private Client client;
 
     @ManyToOne
-    @JoinColumn(name = "post_id", nullable = false)
-    private Post post;
+    @JoinColumn(name = "chat_id", nullable = false)
+    private Chat chat;
 }

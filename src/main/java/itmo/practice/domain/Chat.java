@@ -11,29 +11,29 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
-import static itmo.practice.form.CommentCredentials.encode;
+import static itmo.practice.form.MessageCredentials.encode;
 
 @Getter
 @Setter
 @Entity
 @Table
-public class Post extends AbstractEntity {
+public class Chat extends AbstractEntity {
     @NotNull
     @NotEmpty
     @Size(min = 1, max = 60)
     private String title;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "chat", cascade = CascadeType.ALL)
     @OrderBy("id desc")
-    private List<Comment> comments;
+    private List<Message> messages;
 
-    public String getLastComment() {
-        if (comments.size() == 0) {
+    public String getLastMessage() {
+        if (messages.size() == 0) {
             return null;
         } else {
-            Comment comment = comments.get(0);
-            if (comment != null) {
-                return encode(comment.getText());
+            Message message = messages.get(0);
+            if (message != null) {
+                return encode(message.getText());
             } else {
                 return "NO MESSAGE";
             }
@@ -43,9 +43,9 @@ public class Post extends AbstractEntity {
     @CreationTimestamp
     private Date creationTime;
 
-    public void addComment(Client client, Comment comment) {
-        comment.setPost(this);
-        comment.setClient(client);
-        getComments().add(comment);
+    public void addMessage(Client client, Message message) {
+        message.setChat(this);
+        message.setClient(client);
+        getMessages().add(message);
     }
 }

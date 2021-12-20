@@ -39,8 +39,8 @@ public class WriteFriendPage extends Page {
 
     @PostMapping("/writeFriend")
     public String writeFriendPost(@Valid @ModelAttribute("friend") FriendCredentials friendCredentials,
-                               BindingResult bindingResult,
-                               HttpSession httpSession) {
+                                  BindingResult bindingResult,
+                                  HttpSession httpSession) {
         if (bindingResult.hasErrors()) {
             return "WriteFriendPage";
         }

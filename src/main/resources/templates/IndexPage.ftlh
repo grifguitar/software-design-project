@@ -1,8 +1,8 @@
-<#-- @ftlvariable name="posts" type="itmo.practice.domain.Post[]" -->
+<#-- @ftlvariable name="chats" type="itmo.practice.domain.Chat[]" -->
 <#import "commons.ftlh" as c>
 
 <@c.page>
-    <#list posts as post>
-        <@c.post post=post visible=true/>
+    <#list chats as chat>
+        <@c.chat chat=chat visible=true/>
     </#list>
 </@c.page>
